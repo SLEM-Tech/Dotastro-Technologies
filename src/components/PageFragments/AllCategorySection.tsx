@@ -129,7 +129,7 @@ const AllCategorySection = () => {
       <div className="relative min-h-screen bg-[#060809] overflow-hidden flex items-center">
         <div className="max-w-[1350px] w-full mx-auto  flex flex-col-reverse lg:flex-row items-center justify-between gap-12">
           {/* Text Section */}
-          <div className="flex flex-col justify-center space-y-6 text-center lg:text-left p-2 md:p-1 ">
+          <div className="flex flex-col justify-start md:justify-center space-y-6 text-left lg:text-left p-2 md:p-1 ">
             <h1 className="text-[24px] sm:text-4xl lg:text-5xl xl:text-6xl max-w-[680px] font-bold text-white leading-tight xl:leading-[60px]">
               Your Top Technology Service Provider
             </h1>
@@ -140,10 +140,13 @@ const AllCategorySection = () => {
               power your business growth and success.
             </p>
 
-            <div>
-              <button className="bg-amber-500 hover:bg-amber-600 text-black font-bold px-6 py-3 rounded-sm transition-transform hover:scale-105">
+            <div className="text-center md:text-left">
+              <Link
+                href="http://localhost:3000/category"
+                className="bg-amber-500 hover:bg-amber-600 text-black font-bold px-6 py-3 rounded-sm transition-transform hover:scale-105 mt-[40px] inline-block"
+              >
                 Shop Now
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -221,7 +224,7 @@ const AllCategorySection = () => {
         </div>
       </section>
       {/* Category Section Styling Idea */}
-      <h5 className="max-w-[1350px] mx-auto mt-[50px] text-#181818 font-bold text-[30px] lg:text-[48px]">
+      <h5 className="max-w-[1350px] mx-auto mt-[50px] pl-2 md:pl-0 text-#181818 font-bold text-[30px] lg:text-[48px]">
         Browse categories
       </h5>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 mx-auto max-w-[1350px] px-2 lg:px-0  mt-6 gap-10">
