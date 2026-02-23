@@ -38,6 +38,7 @@ import HomePageBottomHeader from "./HomePageBottomHeader";
 import { FaCartArrowDown } from "@node_modules/react-icons/fa";
 import { BiUser } from "@node_modules/react-icons/bi";
 import { ImSpinner2 } from "@node_modules/react-icons/im";
+import { MdOutlinePerson2 } from "@node_modules/react-icons/md";
 
 const Header = () => {
 	const pathname = usePathname();
@@ -104,12 +105,12 @@ const Header = () => {
 
 	return (
     <>
-      <header className="flex flex-col w-full bg-[#050505] z-[100] fixed top-0 border-b border-white/5 shadow-2xl transition-all">
+      <header className="flex flex-col w-full bg-[#fff] z-[100] fixed top-0 border-b border-white/5 shadow-2xl transition-all">
         {/* Desktop Header */}
         <div className="hidden slg:grid grid-cols-3 items-center justify-stretch w-full py-3 max-w-[1350px] mx-auto">
           {/* 1. Logo */}
           <div className="col-span-1 flex items-center gap-20 ">
-            <div className=" text-white ">
+            <div className=" text-black font-bold text-[30px] ">
               {/* <LogoImage className='!w-[35px] cursor-pointer brightness-200' /> */}
               Logo
             </div>
@@ -121,11 +122,11 @@ const Header = () => {
           {/* 2. Search Bar */}
           <div className="col-span-1 flex justify-center ">
             <div className="relative w-full max-w-[550px] group">
-              <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-blue-500 transition-colors" />
+              <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-[#4c16c7] transition-colors" />
               <input
                 type="text"
                 placeholder="Search hardware, accessories..."
-                className="w-full h-11 text-sm text-white rounded-full pl-12 pr-5 border border-white/10 outline-none focus:border-blue-500/50 transition bg-[#111111]"
+                className="w-full h-11 text-sm text-gray-600 rounded-full pl-12 pr-5 border border-white/8 outline-none focus:border-blue-500/50 transition bg-[#fff]"
                 onChange={(e) => setSearchValue(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleSearch()}
               />
@@ -138,17 +139,17 @@ const Header = () => {
             <Menu as="div" className="relative inline-block text-left">
               {({ open }) => (
                 <>
-                  <Menu.Button className="flex items-center gap-2 bg-[#111111] border border-white/10 px-3 py-2 rounded-xl cursor-pointer hover:bg-white/5 transition group outline-none">
+                  <Menu.Button className="flex items-center gap-2 bg-[#fff] border border-white/10 px-3 py-2 rounded-xl cursor-pointer hover:bg-white/5 transition group outline-none">
                     {/* @ts-ignore */}
                     <Flag
                       code={baseCurrency?.countryCode || "NG"}
                       className="w-4 rounded-sm"
                     />
-                    <span className="text-xs font-bold text-gray-200 uppercase">
+                    <span className="text-xs font-bold text-gray-700 uppercase">
                       {baseCurrency.code}
                     </span>
                     <SlArrowDown
-                      className={`text-[8px] text-gray-500 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+                      className={`text-[8px] text-gray-900 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
                     />
                   </Menu.Button>
 
@@ -170,11 +171,14 @@ const Header = () => {
                               className={`${
                                 active
                                   ? "bg-white/5 text-white"
-                                  : "text-gray-400"
+                                  : "text-gray-500"
                               } flex w-full items-center gap-2 rounded-xl px-3 py-2.5 text-xs font-medium transition-colors`}
                             >
                               {/* @ts-ignore */}
-                              <Flag code={c.countryCode} className="w-4" />
+                              <Flag
+                                code={c.countryCode}
+                                className="w-4 text-black"
+                              />
                               {c.code} ({c.symbol})
                             </button>
                           )}
@@ -188,9 +192,9 @@ const Header = () => {
 
             {/* Cart */}
             <div className="relative cursor-pointer group" onClick={onOpenCart}>
-              <FiShoppingBag className="text-2xl text-gray-300 group-hover:text-blue-500 transition" />
+              <FiShoppingBag className="text-2xl text-gray-600 group-hover:text-[#4c16c7] transition" />
               {totalItems > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 size-5 bg-blue-600 text-white text-[10px] font-black flex items-center justify-center rounded-full border-2 border-black">
+                <span className="absolute -top-1.5 -right-1.5 size-5 bg-[#4c16c7] text-white text-[10px] font-black flex items-center justify-center rounded-full border-2 border-black">
                   {totalItems}
                 </span>
               )}
@@ -202,14 +206,12 @@ const Header = () => {
                 <>
                   <Menu.Button className="flex items-center gap-2 cursor-pointer group outline-none focus:ring-0">
                     {wc_customer_info?.shipping?.address_2 ? (
-                      <Picture
-                        src={wc_customer_info.shipping.address_2}
-                        alt="user"
-                        className="size-9 rounded-full border border-white/10"
-                      />
-                    ) : (
-                      <div className="size-9 rounded-full bg-gray-600 text-white flex items-center justify-center font-black text-xs">
+                      <div className="size-9 rounded-full border border-white/10">
                         {getFirstCharacter(wc_customer_info?.first_name || "U")}
+                      </div>
+                    ) : (
+                      <div className="size-9 rounded-full bg-gray-200 text-white flex items-center justify-center font-black text-xs">
+                        <MdOutlinePerson2 size="25px" color="black" />
                       </div>
                     )}
                     <SlArrowDown
@@ -279,8 +281,8 @@ const Header = () => {
               )}
             </Menu>
             <Link href="/user/register">
-              <button className="bg-amber-500 font-[300] hover:bg-amber-600 text-white px-8 py-3 rounded-md transition-all duration-300 ease-in-out transform hover:scale-105 w-fit">
-                Open an account
+              <button className="bg-[#4c16c7] font-[300] hover:opacity-80 text-white px-6 py-3 rounded-[24px] transition-all duration-300 ease-in-out transform hover:scale-105 w-fit">
+                Get Started
               </button>
             </Link>
           </div>

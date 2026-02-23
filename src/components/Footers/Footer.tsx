@@ -11,146 +11,131 @@ import { useCustomer } from "../lib/woocommerce";
 import { LogoImage } from "@utils/function";
 import { usePathname } from "next/navigation";
 import {
-	BiLogoFacebook,
-	BiLogoLinkedin,
-	BiLogoTiktok,
-	BiLogoWhatsapp,
+  BiLogoFacebook,
+  BiLogoLinkedin,
+  BiLogoTiktok,
+  BiLogoWhatsapp,
 } from "@node_modules/react-icons/bi";
 
 interface footerDataProps {
-	title: string;
-	links: {
-		label: string;
-		href: string;
-		function?: () => void;
-	}[];
+  title: string;
+  links: {
+    label: string;
+    href: string;
+    function?: () => void;
+  }[];
 }
 
 const Footer = () => {
-	const { email } = useToken();
-	const currentYear = new Date().getFullYear();
-	const pathname = usePathname();
-	const { data: customer, isLoading, isError } = useCustomer("");
-	const wc_customer2_info: Woo_Customer_Type[] = customer;
-	const wc_customer_info: Woo_Customer_Type | undefined =
-		filterCustomersByEmail(wc_customer2_info, email);
-	const firstName = wc_customer_info?.first_name;
-	const footer1socialMediaIcons = [
-		{
-			id: 1,
-			icon: <BiLogoTiktok className='text-2xl sm:text-3xl text-white' />,
-			link: "",
-			backgroundColor: "bg-gray-900",
-		},
-		{
-			id: 2,
-			icon: <BiLogoWhatsapp className='text-2xl sm:text-3xl text-white' />,
-			link: "",
-			backgroundColor: "bg-whatsapp",
-		},
-		// {
-		// 	id: 2,
-		// 	icon: <Iconbi.BiLogoTwitter className='text-lg sm:text-2xl text-white' />,
-		// 	link: "#",
-		// 	backgroundColor: "bg-[#3CF]",
-		// },
-	];
+  const { email } = useToken();
+  const currentYear = new Date().getFullYear();
+  const pathname = usePathname();
+  const { data: customer, isLoading, isError } = useCustomer("");
+  const wc_customer2_info: Woo_Customer_Type[] = customer;
+  const wc_customer_info: Woo_Customer_Type | undefined =
+    filterCustomersByEmail(wc_customer2_info, email);
+  const firstName = wc_customer_info?.first_name;
+  const footer1socialMediaIcons = [
+    {
+      id: 1,
+      icon: <BiLogoTiktok className="text-2xl sm:text-3xl text-white" />,
+      link: "",
+      backgroundColor: "bg-gray-900",
+    },
+    {
+      id: 2,
+      icon: <BiLogoWhatsapp className="text-2xl sm:text-3xl text-white" />,
+      link: "",
+      backgroundColor: "bg-whatsapp",
+    },
+    // {
+    // 	id: 2,
+    // 	icon: <Iconbi.BiLogoTwitter className='text-lg sm:text-2xl text-white' />,
+    // 	link: "#",
+    // 	backgroundColor: "bg-[#3CF]",
+    // },
+  ];
 
-	const footerCardData = [
-		{
-			icon: <RocketIconSvg />,
-			name: "Delivery Assistance",
-			description: "Seller Online Delivery",
-		},
-		{
-			icon: <FileIconSvg />,
-			name: "Secure Purchase",
-			description: "100% Secure Payment",
-		},
-		{
-			icon: <ChatServiceIconSvg />,
-			name: "Unmatched Service",
-			description: "Dedicated Support",
-		},
-	];
+  const footerCardData = [
+    {
+      icon: <RocketIconSvg />,
+      name: "Delivery Assistance",
+      description: "Seller Online Delivery",
+    },
+    {
+      icon: <FileIconSvg />,
+      name: "Secure Purchase",
+      description: "100% Secure Payment",
+    },
+    {
+      icon: <ChatServiceIconSvg />,
+      name: "Unmatched Service",
+      description: "Dedicated Support",
+    },
+  ];
 
-	const footerData: footerDataProps[] = [
-		{
-			title: "Account",
-			links: [
-				{
-					label: firstName ? "Update Account" : "Create Account",
-					href: firstName ? "/user/account-details" : "/user/register",
-				},
-				{
-					label: firstName ? "Log Out" : "Login",
-					href: firstName ? "" : "/user/login",
-					function: firstName ? signOut : () => {},
-				},
-				{
-					label: firstName ? "Change Password" : "Forget Password",
-					href: firstName ? "/user/change-password" : "/user/forget-password",
-				},
-			],
-		},
-		{
-			title: "Information",
-			links: [
-				{ label: "FAQ", href: "/faq" },
-				{ label: "Support", href: "/contact-us" },
-			],
-		},
-		{
-			title: "Legal",
-			links: [
-				{ label: "Terms of Use", href: "/terms-of-use?terms-of-use" },
-				{ label: "Privacy Policy", href: "/terms-of-use?privacy-policy" },
-				{ label: "Delivery & Shipping", href: "/terms-of-use?delivery-return" },
-				{ label: "Refund Policy", href: "/terms-of-use?refund-policy" },
-			],
-		},
-	];
+  const footerData: footerDataProps[] = [
+    {
+      title: "Account",
+      links: [
+        {
+          label: firstName ? "Update Account" : "Create Account",
+          href: firstName ? "/user/account-details" : "/user/register",
+        },
+        {
+          label: firstName ? "Log Out" : "Login",
+          href: firstName ? "" : "/user/login",
+          function: firstName ? signOut : () => {},
+        },
+        {
+          label: firstName ? "Change Password" : "Forget Password",
+          href: firstName ? "/user/change-password" : "/user/forget-password",
+        },
+      ],
+    },
+    {
+      title: "Information",
+      links: [
+        { label: "FAQ", href: "/faq" },
+        { label: "Support", href: "/contact-us" },
+      ],
+    },
+    {
+      title: "Legal",
+      links: [
+        { label: "Terms of Use", href: "/terms-of-use?terms-of-use" },
+        { label: "Privacy Policy", href: "/terms-of-use?privacy-policy" },
+        { label: "Delivery & Shipping", href: "/terms-of-use?delivery-return" },
+        { label: "Refund Policy", href: "/terms-of-use?refund-policy" },
+      ],
+    },
+  ];
 
-	const productCards = footerCardData.map((item, index) => (
-		<FooterCard
-			key={index}
-			icon={item.icon}
-			name={item.name}
-			description={item.description}
-			borderRight={index !== footerCardData.length - 1}
-		/>
-	));
+  const productCards = footerCardData.map((item, index) => (
+    <FooterCard
+      key={index}
+      icon={item.icon}
+      name={item.name}
+      description={item.description}
+      borderRight={index !== footerCardData.length - 1}
+    />
+  ));
 
-	const staggerDelay = 0.2;
+  const staggerDelay = 0.2;
 
-	return (
-    <footer className=" bg-black w-full py-2 flex flex-col item-center">
+  return (
+    <footer className=" bg-[#EEEEEE] w-full py-2 flex flex-col item-center">
       <div className="mx-auto max-w-[1350px] w-full hidden slg:block">
         <section className="flex justify-center gap-16 mt-2">
           <div className="flex flex-col gap-4 w-[80%]">
             {/* <LogoImage className='!w-[20px] lg:!w-[30px] rounded-sm' /> */}
-            <p className="w-[20px] lg:!w-[30px] rounded-sm text-white">Logo</p>
-
-            {/* <div className="flex gap-1">
-              {footer1socialMediaIcons.map((item, index) => (
-                <motion.a
-                  href={item.link}
-                  key={index}
-                  className={`p-1 rounded-full ${item.backgroundColor} transition-[.5] hover:!-translate-y-1 hover:scale-110`}
-                  initial={{ opacity: 0, scale: 1 }} // Initial position (opacity 0, y-axis offset 20px, and slightly smaller)
-                  animate={{ opacity: 1, scale: 0.8 }} // Target position (fully opaque, no offset, and original size)
-                  transition={{ delay: index * staggerDelay, duration: 0.5 }} // Stagger the animation delay based on index and set duration
-                >
-                  {item.icon}
-                </motion.a>
-              ))}
-            </div> */}
+            <p className="w-[20px] lg:!w-[30px] rounded-sm text-black">Logo</p>
           </div>
 
           <div className="flex gap-4 w-full pt-3">
             {footerData.map((section, index) => (
               <div key={index} className="flex flex-col gap-4 lg:gap-5 w-full">
-                <span className="text-white font-medium text-base leading-[1.6]">
+                <span className="text-black font-medium text-base leading-[1.6]">
                   {section.title}
                 </span>
                 {section.links.map((link, linkIndex) => (
@@ -158,7 +143,7 @@ const Footer = () => {
                     key={linkIndex}
                     href={link.href}
                     onClick={link.function}
-                    className="text-white text-sm leading-[1.3] hover:text-primary-100 transition-[.3]"
+                    className="text-black text-sm leading-[1.3] hover:text-[#6D28D9] transition-[.3]"
                   >
                     {link.label}
                   </Link>
@@ -178,31 +163,38 @@ const Footer = () => {
           <div className="flex w-full justify-between items-end gap-4">
             <div className="">
               {/* <LogoImage className="!w-[30px] lg:!w-[30px]" /> */}
-              <p className="w-[20px] lg:!w-[30px] rounded-sm text-white">
+              <p className="w-[20px] lg:!w-[30px] rounded-sm text-black">
                 Logo
               </p>
             </div>
 
-            {/* <div className="flex gap-1 h-fit">
+            <div className="flex items-center justify-center md:justify-end gap-3">
               {footer1socialMediaIcons.map((item, index) => (
                 <motion.a
-                  href={item.link}
                   key={index}
-                  className={`p-1 rounded-full ${item.backgroundColor} transition-[.5] hover:!-translate-y-1 hover:scale-110`}
-                  initial={{ opacity: 0, scale: 1 }} // Initial position (opacity 0, y-axis offset 20px, and slightly smaller)
-                  animate={{ opacity: 1, scale: 0.8 }} // Target position (fully opaque, no offset, and original size)
-                  transition={{ delay: index * staggerDelay, duration: 0.5 }} // Stagger the animation delay based on index and set duration
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex items-center justify-center
+                    w-8 h-8
+                    rounded-full
+                    ${item.backgroundColor}
+                    transition-all duration-300
+                    hover:-translate-y-1 hover:scale-110`}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * staggerDelay, duration: 0.4 }}
                 >
                   {item.icon}
                 </motion.a>
               ))}
-            </div> */}
+            </div>
           </div>
 
           <div className="flex lg:gap-8 w-full pt-3">
             {footerData.map((section, index) => (
               <div key={index} className="flex flex-col gap-2 sm:gap-5 w-full">
-                <span className="text-white font-medium text-sm sm:text-base leading-[1.6]">
+                <span className="text-black font-medium text-sm sm:text-base leading-[1.6]">
                   {section.title}
                 </span>
 
@@ -210,7 +202,7 @@ const Footer = () => {
                   <Link
                     key={linkIndex}
                     href={link.href}
-                    className={`${link.href === pathname ? "text-primary-100" : "text-white"} text-xs sm:text-sm font-[400] hover:text-[#DC8204] transition-[.3] leading-6`}
+                    className={`${link.href === pathname ? "text-[#6D28D9]" : "text-black"} text-xs sm:text-sm font-[400] hover:text-[#6D28D9] transition-[.3] leading-6`}
                   >
                     {link.label}
                   </Link>
@@ -221,11 +213,41 @@ const Footer = () => {
         </section>
       </div>
 
-      <div className="mx-auto max-w-[1156px]">
-        <div className="flex items-center justify-center py-2">
-          <div className="text-white sm:font-mono text-xs leading-[1.2]">
-            Copyright&nbsp;@ {currentYear}&nbsp;{CompanyName} Alright Reserved.
-          </div>
+      <div
+        className="flex flex-col md:flex-row 
+                items-center 
+                justify-center md:justify-between 
+                text-center md:text-left
+                gap-4 md:gap-0
+                w-full max-w-[1350px] 
+                mx-auto pr-8 py-4"
+      >
+        {/* Copyright */}
+        <div className="text-black font-mono text-xs leading-relaxed">
+          Copyright © {currentYear} {CompanyName}. All Rights Reserved.
+        </div>
+
+        {/* Social Icons */}
+        <div className="hidden md:flex items-center justify-center md:justify-end">
+          {footer1socialMediaIcons.map((item, index) => (
+            <motion.a
+              key={index}
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex items-center justify-center
+                    w-8 h-8
+                    rounded-full
+                    ${item.backgroundColor}
+                    transition-all duration-300
+                    hover:-translate-y-1 hover:scale-110`}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * staggerDelay, duration: 0.4 }}
+            >
+              {item.icon}
+            </motion.a>
+          ))}
         </div>
       </div>
     </footer>

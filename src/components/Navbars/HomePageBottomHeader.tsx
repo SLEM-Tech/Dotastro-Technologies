@@ -12,7 +12,7 @@ const HomePageBottomHeader = () => {
 	const phoneNumber = "09160001343";
 	return (
 		<nav
-			className={`hidden slg:flex justify-center gap-24 items-center w-full py-1 bg-dark transition`}
+			className={`hidden slg:flex justify-center gap-24 items-center w-full py-1 bg-white transition`}
 		>
 			<div className='flex w-fit gap-8 overflow-hidden'>
 				{headerNavLinks.map((link) => (
@@ -20,7 +20,7 @@ const HomePageBottomHeader = () => {
 						key={link.id}
 						href={link.href}
 						className={`text-base font-medium leading-[1.8] transition hover:text-effect relative group ${
-							pathname === link.href ? "text-white" : "text-gray-500"
+							pathname === link.href ? "text-black" : "text-gray-400"
 						}`}
 					>
 						{link.text}
