@@ -128,8 +128,7 @@ const Footer = () => {
       <div className="mx-auto max-w-[1350px] w-full hidden slg:block">
         <section className="flex justify-center gap-16 mt-2">
           <div className="flex flex-col gap-4 w-[80%]">
-            {/* <LogoImage className='!w-[20px] lg:!w-[30px] rounded-sm' /> */}
-            <p className="w-[20px] lg:!w-[30px] rounded-sm text-black">Logo</p>
+            <LogoImage className="!w-[50px] lg:!w-[100px] rounded-sm" />
           </div>
 
           <div className="flex gap-4 w-full pt-3">
@@ -162,10 +161,7 @@ const Footer = () => {
         <section className="flex flex-col justify-between gap-1 sm:gap-6 mt-2 px-2 xs:px-6 sm:px-10">
           <div className="flex w-full justify-between items-end gap-4">
             <div className="">
-              {/* <LogoImage className="!w-[30px] lg:!w-[30px]" /> */}
-              <p className="w-[20px] lg:!w-[30px] rounded-sm text-black">
-                Logo
-              </p>
+              <LogoImage className="!w-[100px] lg:!w-[100px] rounded-sm" />
             </div>
 
             <div className="flex items-center justify-center md:justify-end gap-3">
