@@ -125,13 +125,13 @@ const Footer = () => {
 
   return (
     <footer className=" bg-[#EEEEEE] w-full py-2 flex flex-col item-center">
-      <div className="mx-auto max-w-[1350px] w-full hidden slg:block">
+      <div className="mx-auto max-w-[1350px] pb-20 w-full hidden slg:block">
         <section className="flex justify-center gap-16 mt-2">
           <div className="flex flex-col gap-4 w-[80%]">
             <LogoImage className="!w-[50px] lg:!w-[100px] rounded-sm" />
           </div>
 
-          <div className="flex gap-4 w-full pt-3">
+          <div className="flex gap-4 w-full pt-3 ">
             {footerData.map((section, index) => (
               <div key={index} className="flex flex-col gap-4 lg:gap-5 w-full">
                 <span className="text-black font-medium text-base leading-[1.6]">
@@ -157,7 +157,7 @@ const Footer = () => {
         <hr className="w-full bg-primary-400/40" />
       </div> */}
 
-      <div className="mx-auto flex w-full flex-col slg:hidden mb-4">
+      <div className="mx-auto pb-20 flex w-full flex-col slg:hidden ">
         <section className="flex flex-col justify-between gap-1 sm:gap-6 mt-2 px-2 xs:px-6 sm:px-10">
           <div className="flex w-full justify-between items-end gap-4">
             <div className="">
@@ -211,7 +211,7 @@ const Footer = () => {
 
       <div
         className="flex flex-col md:flex-row 
-                items-center 
+                items-center mb-[-100px]
                 justify-center md:justify-between 
                 text-center md:text-left
                 gap-4 md:gap-0
@@ -224,7 +224,7 @@ const Footer = () => {
         </div>
 
         {/* Social Icons */}
-        <div className="hidden md:flex items-center justify-center md:justify-end">
+        <div className="hidden md:flex items-center border gap-4  mr-4 justify-center md:justify-end">
           {footer1socialMediaIcons.map((item, index) => (
             <motion.a
               key={index}

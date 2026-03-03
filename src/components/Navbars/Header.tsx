@@ -111,7 +111,7 @@ const Header = () => {
           {/* 1. Logo */}
           <div className="col-span-1 flex items-center gap-20 ">
             <div className=" ">
-              <LogoImage className='!w-[100px] cursor-pointer brightness-200' />
+              <LogoImage className='!w-[200px] cursor-pointer brightness-200' />
             </div>
 
             <div className="">
