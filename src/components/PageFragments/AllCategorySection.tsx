@@ -198,7 +198,7 @@ const AllCategorySection = () => {
       </h5>
       <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 mx-auto max-w-[1350px] px-2 lg:px-0  mt-6 gap-10">
         {categories
-          ?.filter((category: CategoryType) => category?.count > 0)
+          ?.filter((category: CategoryType) => category?.count > 1)
           ?.slice(0, 5)
           .map((cat:any) => {
             const productImage = categoryProductsMap[cat?.id];
