@@ -36,6 +36,7 @@ const AllCategorySection = () => {
     isError: categoryIsError,
   } = useCategories("");
 
+  //@ts-ignore
   const Categories: CategoryType[] = categories;
   const TotalCatgory = Categories?.length - 1;
 
@@ -192,73 +193,64 @@ const AllCategorySection = () => {
         </div>
       </div>
 
-      {/* Category Section Styling Idea */}
-      <h5 className="max-w-[1350px] mx-auto mt-[50px] pl-2 md:pl-0 text-#181818 font-bold text-[30px] lg:text-[48px]">
-        Select category
-      </h5>
-      <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 mx-auto max-w-[1350px] px-2 lg:px-0  mt-6 gap-10">
-        {categories
-          ?.filter((category: CategoryType) => category?.count > 1)
-          ?.slice(0, 5)
-          .map((cat:any) => {
-            const productImage = categoryProductsMap[cat?.id];
-            return (
-              <Link
-                key={cat.id}
-                href={`/category/${convertToSlug(cat.name)}-${cat.id}`}
-                className="group block w-full max-w-[300px] md:max-w-[220px]"
-              >
-                <div className="bg-[#EDEDED] rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
-                  {/* IMAGE SECTION */}
-                  <div className="relative p-4">
-                    {/* Wishlist Icon */}
-                    <button
-                      className="absolute top-3 right-3 bg-white/80 backdrop-blur-sm 
-                         rounded-full p-2 shadow-sm hover:scale-105 transition"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-4 w-4 text-gray-500"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
+      {/* Category Section */}
+      <div className="max-w-[1350px] mx-auto px-4 lg:px-0 mt-[50px]">
+        <h2 className="text-gray-900 font-bold text-[25px] sm:text-[32px] lg:text-[48px] tracking-tight mb-8">
+          Best selling
+        </h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 lg:gap-8">
+          {categories
+            ?.filter((category: CategoryType) => category?.count > 0)
+            ?.slice(0, 5)
+            .map((cat: any) => {
+              const productImage = categoryProductsMap[cat?.id];
+              return (
+                <Link
+                  key={cat.id}
+                  href={`/category/${convertToSlug(cat.name)}-${cat.id}`}
+                  className="group block w-full h-full"
+                >
+                  <div className="h-full flex flex-col bg-[#EDEDED] rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+                    {/* IMAGE SECTION */}
+                    <div className="relative p-3 flex-shrink-0">
+                      {/* Wishlist Icon */}
+                      <button
+                        className="absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full p-2 shadow-sm hover:scale-105 transition z-10"
+                        aria-label="Add to wishlist"
                       >
-                        <path
-                          d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 
-                   2 5.42 4.42 3 7.5 3 
-                   c1.74 0 3.41.81 4.5 2.09 
-                   C13.09 3.81 14.76 3 16.5 3 
-                   19.58 3 22 5.42 22 8.5 
-                   c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-                        />
-                      </svg>
-                    </button>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-4 w-4 text-gray-500"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3 c1.74 0 3.41.81 4.5 2.09 C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5 c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                        </svg>
+                      </button>
 
-                    {/* Product Image */}
-                    <div className="flex items-center justify-center h-[200px]">
-                      <img
-                        src={cat.image?.src ?? productImage}
-                        alt={cat.image?.name}
-                        className="max-h-full object-contain transition-transform duration-500 group-hover:scale-105"
-                      />
+                      {/* Category Image */}
+                      <div className="w-full aspect-square flex items-center justify-center bg-gray-100">
+                        <img
+                          src={cat.image?.src ?? productImage}
+                          alt={cat.image?.name}
+                          width={220}
+                          height={220}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </div>
+                    </div>
+
+                    {/* INFO SECTION */}
+                    <div className="flex-1 px-3 py-4 flex flex-col justify-end">
+                      <button className="w-full bg-gradient-to-r from-[#6D28D9] to-[#5E1EE5] text-white text-xs sm:text-sm font-medium py-2 sm:py-2.5 rounded-md hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#5E1EE5] transition text-center line-clamp-2">
+                        {cat?.name}
+                      </button>
                     </div>
                   </div>
-
-                  {/* INFO SECTION */}
-                  <div className="px-4 pb-4 space-y-1">
-                    {/* CTA BUTTON */}
-                    <button
-                      className=" w-full bg-gradient-to-r from-[#6D28D9] to-[#5E1EE5]
-                   text-white text-sm font-medium py-2.5 rounded-md
-                   flex items-center justify-center gap-2
-                   hover:opacity-90 transition"
-                    >
-                      {cat?.name}
-                    </button>
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
+                </Link>
+              );
+            })}
+        </div>
       </div>
 
       {/* </Carousel> */}

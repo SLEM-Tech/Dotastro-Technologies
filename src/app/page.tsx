@@ -29,7 +29,7 @@ const page = () => {
         <SortedProducts />
       </div>
       <GetStarted />
-      {/* <AppMenu /> */}
+      <AppMenu />
     </AppLayout>
   );
 };

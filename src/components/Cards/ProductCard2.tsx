@@ -51,15 +51,15 @@ const ProductCard2 = ({
   return (
     <div
       className={`group relative flex flex-col 
-      w-[280px] lg:w-[250px] h-[380px] 
+      w-full max-w-[250px] 
       rounded-lg bg-[#EDEDED] overflow-hidden 
-      transition-all duration-300
+      transition-shadow duration-300
       ${boxShadow ? "shadow-sm hover:shadow-md" : "border border-gray-200"}`}
     >
       {/* ================= IMAGE SECTION ================= */}
       <Link
         href={`/home-item/product/${slugDesc}-${id}`}
-        className="relative p-5 flex items-center justify-center h-[220px] shrink-0"
+        className="relative p-4 flex items-center justify-center w-full aspect-square shrink-0"
       >
         {/* Wishlist icon */}
         <div
@@ -86,7 +86,7 @@ const ProductCard2 = ({
         <Picture
           src={image}
           alt={description}
-          className="object-contain max-h-full transition-transform duration-500 group-hover:scale-105"
+          className="object-cover w-full h-[150px] md:h-[250px] transition-transform duration-500 group-hover:scale-105"
         />
 
         {discount > 0 && (
@@ -112,7 +112,7 @@ const ProductCard2 = ({
               <FormatMoney2 value={parseInt(oldAmount)} />
             </span>
           )}
-          <span className="text-base font-bold text-gray-900">
+          <span className="text-lg font-semibold text-gray-900">
             {price ? <FormatMoney2 value={price} /> : "N/A"}
           </span>
         </div>
